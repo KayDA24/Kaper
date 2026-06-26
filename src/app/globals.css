@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+  --ink: 17 24 39;
+  --muted: 100 116 139;
+  --canvas: 246 247 251;
+  --panel: 255 255 255;
+  --line: 226 232 240;
+  --brand: 45 64 172;
+  --accent: 34 131 226;
+}
+
+.dark {
+  --ink: 226 232 240;
+  --muted: 148 163 184;
+  --canvas: 15 23 42;
+  --panel: 30 41 59;
+  --line: 51 65 85;
+  --brand: 132 147 255;
+  --accent: 96 165 250;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: rgb(var(--ink));
+  background: rgb(var(--canvas));
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.pdf-stage object {
+  min-height: 100%;
+}
