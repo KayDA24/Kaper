@@ -4,7 +4,13 @@ import { useRouter } from "next/navigation";
 import { DragEvent, useState } from "react";
 import { createPaperFromFile } from "@/lib/storage";
 
-export default function EmptyLibrary() {
+export default function EmptyLibrary({
+  title = "아직 업로드된 논문이 없습니다",
+  description = "PDF 논문을 직접 업로드하면 라이브러리에 저장되고, 새로고침 후에도 다시 열 수 있습니다."
+}: {
+  title?: string;
+  description?: string;
+}) {
   const router = useRouter();
   const [dragging, setDragging] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -41,8 +47,8 @@ export default function EmptyLibrary() {
             <div className="mt-2 h-3 w-16 rounded bg-accent/30" />
           </div>
         </div>
-        <h1 className="text-[32px] font-bold leading-10 tracking-tight">아직 업로드된 논문이 없습니다</h1>
-        <p className="mt-4 w-96 text-base leading-7 text-muted">PDF 논문을 직접 업로드하면 라이브러리에 저장되고, 새로고침 후에도 다시 열 수 있습니다.</p>
+        <h1 className="text-[32px] font-bold leading-10 tracking-tight">{title}</h1>
+        <p className="mt-4 w-96 text-base leading-7 text-muted">{description}</p>
         <div className="mt-8 flex justify-center gap-4">
           <label className="flex h-[54px] cursor-pointer items-center justify-center rounded bg-brand px-8 text-base font-semibold text-white shadow-soft transition hover:opacity-90">
             {busy ? "저장 중..." : "PDF 논문 업로드"}

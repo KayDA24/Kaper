@@ -1,4 +1,7 @@
+import { ensurePdfJsPolyfills } from "./pdf-polyfills";
+
 export async function extractPdfPages(blob: Blob): Promise<string[]> {
+  ensurePdfJsPolyfills();
   const pdfjs = await import("pdfjs-dist");
 
   if (!pdfjs.GlobalWorkerOptions.workerSrc) {

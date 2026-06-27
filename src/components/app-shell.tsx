@@ -101,7 +101,7 @@ export default function AppShell({ children, title = "Kaper" }: { children: Reac
               value={searchQuery}
               onChange={(event) => updateSearchQuery(event.target.value)}
               className="h-10 w-full rounded border border-line bg-canvas pl-9 pr-4 text-sm text-ink outline-none transition focus:border-brand"
-              placeholder="논문 내용에서 단어 검색..."
+              placeholder="노트·단어·마커 검색..."
             />
           </label>
           <div className="ml-auto flex items-center gap-4">
