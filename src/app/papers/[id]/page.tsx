@@ -1,18 +1,21 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import AppShell from "@/components/app-shell";
 import PaperWorkspace from "@/components/paper-workspace";
 import { usePaper } from "@/lib/hooks";
 
 export default function PaperPage() {
   const params = useParams<{ id: string }>();
+  const searchParams = useSearchParams();
   const { paper, ready } = usePaper(params.id);
+  const initialPage = Number(searchParams.get("page")) || undefined;
+  const initialMarkerId = searchParams.get("marker") ?? undefined;
 
   return (
     <AppShell title="논문 읽기">
       {!ready ? null : paper ? (
-        <PaperWorkspace paper={paper} />
+        <PaperWorkspace paper={paper} initialPage={initialPage} initialMarkerId={initialMarkerId} />
       ) : (
         <div className="flex min-h-[calc(100vh-64px)] items-center justify-center p-8 text-center">
           <div className="rounded-2xl border border-line bg-panel p-10 shadow-soft">
